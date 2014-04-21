@@ -16,7 +16,12 @@ html, body, div, img, span, h1, h2, h3, h4, p, ol, ul, li {
 li {list-style-position: inside;}
 
 body {
+  font-family: 'Open Sans Condensed', 'sans-serif';
   background-color: steelblue;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Oswald', 'sans-serif' !important;
 }
 
 .clear {clear:both;}
@@ -32,7 +37,14 @@ body {
   vertical-align: middle;
 }
 
-.test {
-  background-color: red;
-  height: 500px;
+
+.feed-message {
+  position: relative;
+
+}
+
+.message-picture {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

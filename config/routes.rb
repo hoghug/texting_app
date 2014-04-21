@@ -3,8 +3,9 @@ Reelio::Application.routes.draw do
 
   resources :users do
     resources :contacts
+    resources :messages
   end
-
+  resources :shares
 
   root "users#show"
 end

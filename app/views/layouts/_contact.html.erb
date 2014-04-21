@@ -1,10 +1,11 @@
 <div id="contact-modal" class="reveal-modal" data-reveal>
+  <a class="close-reveal-modal">&#215;</a>
 
-<h2>Add New Contact</h2>
-<%= form_for [current_user, @contact] do |f| %>
-  <% users_array = @users.map { |user| [user.username(user), user.id] } %>
-  <%= f.select :entry_id, options_for_select(users_array)  %>
-  <%= f.submit 'Add Contact' %>
-<% end %>
+  <h2>Add New Contact</h2>
+  <%= form_for [current_user, @contact] do |f| %>
+    <% users_array = @users.map { |user| [user.username(user), user.id] } %>
+    <%= f.select :entry_id, options_for_select(users_array)  %>
+    <%= f.submit 'Add Contact' %>
+  <% end %>
 
 </div>
