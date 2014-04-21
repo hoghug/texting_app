@@ -1,0 +1,21 @@
+
+<div>
+  <div id="contacts" class=" small-12 large-4 columns test">
+    <h4>My Contacts</h4>
+    <a href="#" data-reveal-id="contact-modal" class="button tiny" data-reveal>New Contact</a>
+    <ul>
+      <% current_user.contacts.each do |contact| %>
+        <% user = User.find(contact.entry_id) %>
+        <li><%= user.username(user) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="feed" class="small-12 large-8 columns test">
+    <h4>My Feed</h4>
+  </div>
+
+</div>
+
+
+<%= render 'layouts/contact' %>
