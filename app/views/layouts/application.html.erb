@@ -27,7 +27,8 @@
       <div class="clear"></div>
     </div>
 
-    <% if current_user && params[:id] %>
+    <% if current_user %>
+      <% @message = Message.new %>
       <%= render 'layouts/message' %>
     <% end %>
 

@@ -11,10 +11,14 @@
       <ul>
         <% current_user.contacts.each do |contact| %>
           <% user = User.find(contact.entry_id) %>
-          <li><%= link_to user.username(user), user_path(user) %> <a class="new-message" href="#" data-recipient-id="<%= user.id %>" data-reveal-id="message-modal" data-reveal><span class="glyphicon glyphicon-envelope"></span></a>
-</li>
+          <li>
+            <input type="checkbox" class="user-message-cb" value="<%= user.id %>">
+            <%= link_to user.username(user), user_path(user) %> <a class="new-message" href="#" data-recipient-id="<%= user.id %>" data-reveal-id="message-modal" data-reveal><span class="glyphicon glyphicon-envelope"></span></a>
+
+          </li>
         <% end %>
       </ul>
+      <a href="#" data-reveal-id="message-modal" id="new-bulk-message" class="button tiny" data-reveal>New Message</a>
     </div>
 
     <div id="feed" class="small-12 large-8 columns">
@@ -25,7 +29,13 @@
             <% if message.picture.url != '/images/original/missing.png' %>
               <%= image_tag message.picture.url(:thumb), class: 'message-picture' %>
             <% end %>
-            <span>Sent <%= time_ago_in_words(message.created_at) %> ago</span>
+            <span>Sent <%= time_ago_in_words(message.created_at) %> ago to:
+              <% message.recipient_id.split(',').each_with_index do |i, index| %>
+                <%= User.find(i).username(User.find(i)) %>
+                <%= index != message.recipient_id.split(',').length - 1 ? '|' : '' %>
+              <% end %>
+
+            </span>
           </div>
         <% end %>
     </div>
