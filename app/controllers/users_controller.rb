@@ -5,10 +5,7 @@ class UsersController < ApplicationController
     else
       @message = Message.new
       existing_contacts = current_user.contacts
-      @users = User.all - [User.find(current_user.id)]
-
-      @users.reject! {|c| existing_contacts.include?(c) }
-
+      @users = User.all - [User.find(current_user.id)] - existing_contacts.map! {|c| User.find(c.entry_id)}
       @contact = Contact.new
     end
   end

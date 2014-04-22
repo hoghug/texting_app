@@ -19,7 +19,7 @@ private
         :password => 'dc4fc6dcd8199eb5e34d9fff1b929133',
         :payload => { :Body => self.text,
                       :To => User.find(self.recipient_id).phone.to_i,
-                      :From => User.find(self.user_id).phone.to_i }
+                      :From => '' }
       ).execute
     rescue RestClient::BadRequest => error
       message = JSON.parse(error.response)['message']
