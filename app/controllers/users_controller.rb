@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     if !user_signed_in?
       redirect_to "/users/sign_in"
     else
-      @message = current_user.messages.new
+      @message = Message.new
       existing_contacts = current_user.contacts
       @users = User.all - [User.find(current_user.id)]
 

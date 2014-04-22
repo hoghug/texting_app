@@ -2,10 +2,10 @@
   <a class="close-reveal-modal">&#215;</a>
   <h2>Send New Message</h2>
   <%= form_for [current_user, @message] do |f| %>
-    <div><input type="text" name="message[receiver_id]" id="receiver-input"></div>
-    <%= f.text_area :text, placeholder: 'What do you have to say?', rows: 5 %>
-    <%= f.file_field :picture %>
-    <%= f.submit 'Send Message', class: 'button tiny' %>
+    <div><input type="text" name="message[recipient_id]" id="recipient-input"></div>
+    <div><%= f.text_area :text, placeholder: 'What do you have to say?', rows: 5 %></div>
+    <div><%= f.file_field :picture %></div>
+    <div><%= f.submit 'Send Message', class: 'button tiny' %></div>
   <% end %>
 
 </div>

@@ -7,7 +7,7 @@
       <ul>
         <% current_user.contacts.each do |contact| %>
           <% user = User.find(contact.entry_id) %>
-          <li><%= link_to user.username(user), user_path(user) %> <a class="new-message" href="#" data-receiver-id="<%= user.id %>" data-reveal-id="message-modal" data-reveal><span class="glyphicon glyphicon-envelope"></span></a>
+          <li><%= link_to user.username(user), user_path(user) %> <a class="new-message" href="#" data-recipient-id="<%= user.id %>" data-reveal-id="message-modal" data-reveal><span class="glyphicon glyphicon-envelope"></span></a>
 </li>
         <% end %>
       </ul>
@@ -21,12 +21,6 @@
             <% if message.picture.url != '/images/original/missing.png' %>
               <%= image_tag message.picture.url(:thumb), class: 'message-picture' %>
             <% end %>
-            <div class="share-info">
-              <span>Received by:</span>
-              <% message.shares.each do |share| %>
-                <%= share.user.username(share.user) %>
-              <% end %>
-            </div>
             <span>Sent <%= time_ago_in_words(message.created_at) %> ago</span>
           </div>
         <% end %>

@@ -1,11 +1,9 @@
 class MessagesController < ApplicationController
   def create
     @user = User.find(current_user.id)
-    @message = @user.messages.new(text: message_params[:text], picture: message_params[:picture])
-    recipient = User.find(message_params[:recipient_id].to_i)
+    @message = @user.messages.new(message_params)
 
     if @message.save
-      @message.shares.create(user_id: recipient.id)
       redirect_to :back
     else
       redirect_to :back
