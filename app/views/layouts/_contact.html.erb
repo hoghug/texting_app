@@ -5,6 +5,7 @@
   <%= form_for [current_user, @contact] do |f| %>
     <% users_array = @users.map { |user| [user.username(user), user.id] } %>
     <%= f.select :entry_id, options_for_select(users_array)  %>
+    <input type="text" name="contact[conf]" placeholder="Confirm Phone #">
     <%= f.submit 'Add Contact' %>
   <% end %>
 

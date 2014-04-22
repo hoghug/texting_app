@@ -17,6 +17,12 @@
   <%= render 'layouts/header' %>
 
     <div id="wrapper">
+      <% if flash[:alert] %>
+        <%= flash[:alert] %>
+      <% end %>
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
       <%= yield %>
       <div class="clear"></div>
     </div>
